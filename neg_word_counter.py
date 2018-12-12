@@ -57,12 +57,15 @@ def predictSentiment(line):
 
             for row in csv.reader(csvinput):
                 if row[0] == "match_id":
-                    writer.writerow(row+["count"])
+                    writer.writerow(row+["cuss"])
                 else:
-                    writer.writerow(row+[neg])
+                    if neg > 0:
+                        writer.writerow(row+[1])
+                    else:
+                        writer.writerow(row+[0])
 
 with open('./dota2_data/dota3_chat2.csv','r') as csvinput:
-    with open('./count_output.csv', 'w') as csvoutput:
+    with open('./cuss_chat.csv', 'w') as csvoutput:
         writer = csv.writer(csvoutput)
         count =0
         for row in csv.reader(csvinput):
